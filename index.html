@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的网站</title>
+    <style>
+        a{
+            color:blue;
+            text-decoration:none
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ecf0f1; /* 浅蓝色背景 */
+            color: #34495e; /* 深灰色文字 */
+        }
+
+        header {
+            background-color: #3498db; /* 蓝色背景 */
+            color: white;
+            text-align: center;
+            padding: 1em; /* 调整高度 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            background-color: #3498db; /* 蓝色背景 */
+            padding: 0.5em; /* 调整高度 */
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1em;
+            padding: 0.3em 0.8em; /* 调整高度和宽度 */
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            background-color: #2980b9; /* 深蓝色悬停效果 */
+        }
+
+        section {
+            padding: 2em; /* 调整高度 */
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-top: 4em; /* 调整高度 */
+        }
+
+        h1 {
+            color: white; /* 白色标题 */
+            padding: 0.5em;
+            border-radius: 5px;
+        }
+
+        h2, h3 {
+            color: #3498db; /* 蓝色标题 */
+            padding: 0.5em;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1em;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3498db; /* 蓝色标题背景 */
+            color: white;
+        }
+
+        td {
+            word-wrap: break-word;
+        }
+
+        footer {
+            background-color: #3498db; /* 蓝色底部背景 */
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+<script>
+!
+function() {
+    function n(n, e, t) {
+        return n.getAttribute(e) || t
+    }
+    function e(n) {
+        return document.getElementsByTagName(n)
+    }
+    function t() {
+        var t = e("script"),
+        o = t.length,
+        i = t[o - 1];
+        return {
+            l: o,
+            z: n(i, "zIndex", -1),
+            o: n(i, "opacity", .5),
+            c: n(i, "color", "0,0,0"),
+            n: n(i, "count", 99)
+        }
+    }
+    function o() {
+        a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+    }
+    function i() {
+        r.clearRect(0, 0, a, c);
+        var n, e, t, o, m, l;
+        s.forEach(function(i, x) {
+            for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+        }),
+        x(i)
+    }
+    var a, c, u, m = document.createElement("canvas"),
+    d = t(),
+    l = "c_n" + d.l,
+    r = m.getContext("2d"),
+    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(n) {
+        window.setTimeout(n, 1e3 / 45)
+    },
+    w = Math.random,
+    y = {
+        x: null,
+        y: null,
+        max: 2e4
+    };
+    m.id = l,
+    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+    e("body")[0].appendChild(m),
+    o(),
+    window.onresize = o,
+    window.onmousemove = function(n) {
+        n = n || window.event,
+        y.x = n.clientX,
+        y.y = n.clientY
+    },
+    window.onmouseout = function() {
+        y.x = null,
+        y.y = null
+    };
+    for (var s = [], f = 0; d.n > f; f++) {
+        var h = w() * a,
+        g = w() * c,
+        v = 2 * w() - 1,
+        p = 2 * w() - 1;
+        s.push({
+            x: h,
+            y: g,
+            xa: v,
+            ya: p,
+            max: 6e3
+        })
+    }
+    u = s.concat([y]),
+    setTimeout(function() {
+        i()
+    },
+    100)
+} ();
+</script>
+
+    <header>
+        <h1>欢迎来到我的网站</h1>
+    </header>
+
+    <nav>
+        <a href="#home">首页</a>
+        <a href="#portfolio">作品集</a>
+    </nav>
+
+    <section id="home">
+        <h2>欢迎来到这个网站</h2>
+        <p>这是首页部分。您可以在这里添加自己的介绍性内容。</p>
+    </section>
+
+    <section id="portfolio">
+        <h2>作品集</h2>
+        <table>
+            <tr>
+                <th colspan="2">时更程序</th>
+            </tr>
+            <tr>
+                <td><b>Python</b></td>
+                <td>
+                    <a href="密码生成器.py" download><b>密码生成器</b></a><br/>
+                    <a href="质数.py" download><b>质数生成器</b></a><br/>
+                    <a href="贪吃蛇-GPT.py" download><b>一个AI写的的贪吃蛇</b></a><br/>
+                    <a href="密码生成器(Tkinter).py" download><b>有界面的密码生成器</b></a><br/>
+                </td>
+            </tr>
+        </table>
+        <br/><br/><br/><br/>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 virbaro的网站 保留所有权利。</p>
+    </footer>
+
+</body>
+
+</html>
